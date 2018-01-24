@@ -61,12 +61,14 @@
   <body>
     <header> 
        <form action="#"> 
-         <input placeholder="Search…" type="search" name="q" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off"> 
-       </form> 
+         <input placeholder="Search…" type="search" name="q" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
 
+       </form> 
+       
     <div class="content"> 
-      <ul data-bind="template: {name:'item', foreach:List}"> 
-      </ul> 
+      <ul data-bind="template: {name:'item', foreach:filteredList}"> 
+      </ul>
+      <button id="button" data-bind="click: locationForFilteredList">Click here</button>
     </div> 
    </header> 
     <div class="container">
@@ -74,9 +76,10 @@
     </div>
     <script type="text/html" id="item"> 
     <li>
-        <strong data-bind="text: title,click: $parent.alertHi"></strong>
+        <strong data-bind="text: title,click: $parent.showMarker"></strong>
     </li>
-</script> 
+
+   </script> 
 
     <script src="js/knockout-3.4.2.js"></script>
     <script src="js/app.js"></script>
