@@ -15,7 +15,7 @@
 
 ## Requiremnets 
 
-1- Inerent access 
+1- Internet access 
 
 2- Browser
 
