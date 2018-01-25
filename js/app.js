@@ -27,20 +27,6 @@ var initData = [
   }
 ];
 
-//       var map;
-//       var markers = [];
-
-//       function initMap() {
-//         // Constructor creates a new map - only center and zoom are required.
-//         map = new google.maps.Map(document.getElementById('map'), {
-//           center: { lat: 59.942803, lng: 30.324841 },
-//           zoom: 13,
-//           mapTypeControl: false
-//         });
-
-//         ko.applyBindings(new ViewModel())
-
-// }
 
 
 function initMap() {
@@ -64,6 +50,7 @@ function initMap() {
 var ViewModel = function() {
     var self = this;
     var markers = [];
+    var message;
     var largeInfowindow = new google.maps.InfoWindow();
     var bounds = new google.maps.LatLngBounds();
    
@@ -117,7 +104,22 @@ var ViewModel = function() {
         // Check to make sure the infowindow is not already opened on this marker.
         if (infowindow.marker != marker) {
           infowindow.marker = marker;
-          infowindow.setContent('<div id='+marker.id+'>' + marker.title + '</div>');
+          var wikiRequestTimeout = setTimeout(function(){
+
+           infowindow.setContent('<div id='+marker.id+'>' + marker.title + '</div><p>wikipedia failed,Try again later!</p>');
+            },2000)
+          var wikiURL = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+marker.title+"&format=json&callback=wikiCallback";
+          $.ajax({
+            url: wikiURL,
+            dataType: "jsonp",
+            success: function( response ){
+            var list = response[1];
+            var link = "https://en.wikipedia.org/wiki/"+list[0];
+            infowindow.setContent('<div id='+marker.id+'>' + marker.title + '</div><br/><a href="'+link+'" target="_blank">read more about this place!</h1>');
+            clearTimeout(wikiRequestTimeout);
+         }
+        });
+          
           infowindow.open(map, marker);
           marker.setAnimation(google.maps.Animation.BOUNCE);
           setTimeout(function() {
