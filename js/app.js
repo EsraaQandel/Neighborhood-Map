@@ -105,7 +105,7 @@ var ViewModel = function() {
         if (infowindow.marker != marker) {
             infowindow.marker = marker;
             var wikiRequestTimeout = setTimeout(function() {
-               infowindow.setContent('<div id=' + marker.id + '>' + marker.title + '</div><p>wikipedia failed,Try again later!</p>');
+                infowindow.setContent('<div id=' + marker.id + '>' + marker.title + '</div><p>wikipedia failed,Try again later!</p>');
             }, 2000)
             var wikiURL = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + marker.title + "&format=json&callback=wikiCallback";
             $.ajax({
@@ -124,7 +124,7 @@ var ViewModel = function() {
             marker.setAnimation(google.maps.Animation.BOUNCE);
             setTimeout(function() {
                 marker.setAnimation(null);
-            }, 1400);
+            }, 2000);
             // Make sure the marker property is cleared if the infowindow is closed.
             infowindow.addListener('closeclick', function() {
                 infowindow.marker = null;
@@ -140,9 +140,8 @@ var ViewModel = function() {
             for (var j = 0; j < self.filteredList().length; j++) {
 
                 if (self.filteredList()[j].id == markers[i].id) {
-                    markers[i].setMap(map);
 
-                    console.log('MATCH !!! for marker' + markers[i].id + 'for list' + self.filteredList()[j].id)
+                    markers[i].setMap(map);
                 }
             }
 

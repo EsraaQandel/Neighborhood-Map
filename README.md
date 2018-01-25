@@ -4,7 +4,7 @@
 >functionality to this map including highlighted locations, third-party data about those locations and various ways to browse the content.
 
 
-### Used in the Project 
+## Used in the Project 
 
 1- Google Maps APS 
 
@@ -12,7 +12,8 @@
 
 3- Wikipedia API 
 
-### Requiremnets 
+
+## Requiremnets 
 
 1- Inerent access 
 
@@ -31,7 +32,7 @@
 
 ## Resources 
 
-- Credit goes to the owner of this [repo](https://github.com/jennikins813/Neighborhood-Map/blob/master/js/main.js) for introducing me to JS callback functions
+- Credit goes to the owner of this [repo](https://github.com/jennikins813/Neighborhood-Map/blob/master/js/main.js) for introducing me to JS callback functions and for inspiration in general
 
 - [Understanding callbacks](https://www.youtube.com/watch?v=pTbSfCT42_M)
 
