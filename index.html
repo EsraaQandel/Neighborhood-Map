@@ -1,49 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <style>
- 
-      #map {
+    #map {
         height: 100%;
         left: 0;
         position: absolute;
         right: 0px;
-      }
-      
-      li {
+    }
+
+   button, li {
         cursor: pointer;
-      }
+    }
     </style>
-  </head>
-  <body>
-    <header> 
+</head>
 
-       <input placeholder="Search…" type="search" name="q" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
-       <button id="button" data-bind="click: locationForFilteredList">Filter on Map</button>
-    <div class="content"> 
-
-      <ul data-bind="template: {name:'item', foreach:filteredList}"> 
-      </ul>
-      
-    </div> 
-   </header> 
+<body>
+    <header>
+        <h3>Some of the awesome Places I could show you, if you visit Egypt! </h3>
+        <input placeholder="Search…" type="search" name="q" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
+        <button id="button" data-bind="click: locationForFilteredList">Filter on Map</button>
+        <div class="content">
+            <ul data-bind="template: {name:'item', foreach:filteredList}">
+            </ul>
+        </div>
+    </header>
     <div class="container">
-      <div id="map"></div>
+        <div id="map"></div>
     </div>
-    <script type="text/html" id="item"> 
-    <li data-bind="text: title,click: $parent.showMarker">
-        
-    </li>
-
-   </script> 
-
+    <script type="text/html" id="item">
+        <li data-bind="text: title,click: $parent.showMarker">
+        </li>
+    </script>
     <script src="js/knockout-3.4.2.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/app.js"></script>
-    <script async defer
-        src=
-        "https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyAk_IL11YZuV3lcIbikpBvEOiHlda-a-C0&v=3&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyAk_IL11YZuV3lcIbikpBvEOiHlda-a-C0&v=3&callback=initMap">
     </script>
+</body>
 
-  </body>
 </html>
