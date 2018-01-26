@@ -54,7 +54,7 @@ var ViewModel = function() {
     // I had to declare this function outside the loop to avoid JSlint errors  
     callpopulateInfoWindow = function() {
         populateInfoWindow(this, largeInfowindow);
-    }
+    };
 
     // The following group uses the filteredList array to create an array of markers on initialize.
     for (var i = 0; i < self.filteredList().length; i++) {
