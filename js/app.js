@@ -151,3 +151,9 @@ function initMap() {
         ko.applyBindings(new ViewModel());
     });
 }
+
+
+function mapError(){
+   
+   document.getElementById('map').innerHTML = "There was an error loading the map, please try again later!"
+}
