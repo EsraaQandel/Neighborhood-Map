@@ -69,10 +69,10 @@ var ViewModel = function() {
         });
         // Push the marker to our array of markers.
         markers.push(marker);
-        // Create an onclick event to open an infowindow at each marker.
+        // add an onclick event to open an infowindow at each marker.
+        // I took that line of code as it is from the lessons, how come it is not a best practice? 
         marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);
-
         });
         bounds.extend(markers[i].position);
     }
