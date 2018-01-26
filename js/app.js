@@ -51,6 +51,10 @@ var ViewModel = function() {
         });
     });
 
+    // I had to declare this function outside the loop to avoid JSlint errors  
+    callpopulateInfoWindow = function() {
+        populateInfoWindow(this, largeInfowindow);
+    }
 
     // The following group uses the filteredList array to create an array of markers on initialize.
     for (var i = 0; i < self.filteredList().length; i++) {
@@ -70,10 +74,7 @@ var ViewModel = function() {
         // Push the marker to our array of markers.
         markers.push(marker);
         // add an onclick event to open an infowindow at each marker.
-        // I took that line of code as it is from the lessons, how come it is not a best practice? 
-        marker.addListener('click', function() {
-            populateInfoWindow(this, largeInfowindow);
-        });
+        marker.addListener('click', callpopulateInfoWindow);
         bounds.extend(markers[i].position);
     }
     // Extend the boundaries of the map for each marker
