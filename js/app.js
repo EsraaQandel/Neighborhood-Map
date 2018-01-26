@@ -28,25 +28,6 @@ var initData = [{
 
 
 
-function initMap() {
-
-
-    function setMap(callback) {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 30.0444, lng: 31.2357 },
-            zoom: 13
-        });
-
-        callback();
-    }
-
-    // call setMap and, after map is rendered, call Knockout bindings via new ViewModel()
-    setMap(function() {
-        ko.applyBindings(new ViewModel());
-    });
-}
-
-
 /* ViewModel */
 var ViewModel = function() {
     var self = this;
@@ -121,6 +102,8 @@ var ViewModel = function() {
             });
 
             infowindow.open(map, marker);
+            // controlling the timing of the marker's animations is obtained from this repo 
+            // https://github.com/jennikins813/Neighborhood-Map/blob/master/js/main.js 
             marker.setAnimation(google.maps.Animation.BOUNCE);
             setTimeout(function() {
                 marker.setAnimation(null);
@@ -148,4 +131,23 @@ var ViewModel = function() {
         }
 
     }
+}
+
+/* init function that renders the app */
+function initMap() {
+    // the content of this function is obtained from this repo 
+    //https://github.com/jennikins813/Neighborhood-Map/blob/master/js/main.js 
+    function loadMap(loadLocations) {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 30.0444, lng: 31.2357 },
+            zoom: 13
+        });
+
+        loadLocations();
+    }
+
+    // load the map and then, ONLY then, load the loacations by calling Knockout bindings via new ViewModel()
+    loadMap(function() {
+        ko.applyBindings(new ViewModel());
+    });
 }
