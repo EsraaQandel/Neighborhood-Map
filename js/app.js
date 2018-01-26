@@ -43,7 +43,7 @@ var ViewModel = function() {
                 populateInfoWindow(markers[i], largeInfowindow);
             }
         }
-    }
+    };
     self.filteredList = ko.computed(function() {
         var search = self.query().toLowerCase();
         return ko.utils.arrayFilter(initData, function(item) {
@@ -87,7 +87,7 @@ var ViewModel = function() {
             infowindow.marker = marker;
             var wikiRequestTimeout = setTimeout(function() {
                 infowindow.setContent('<div id=' + marker.id + '>' + marker.title + '</div><p>wikipedia failed,Try again later!</p>');
-            }, 2000)
+            }, 2000);
             var wikiURL = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + marker.title + "&format=json&callback=wikiCallback";
             $.ajax({
                 url: wikiURL,
@@ -130,8 +130,8 @@ var ViewModel = function() {
 
         }
 
-    }
-}
+    };
+};
 
 /* init function that renders the app */
 function initMap() {
@@ -153,7 +153,7 @@ function initMap() {
 }
 
 
-function mapError(){
-   
-   document.getElementById('map').innerHTML = "There was an error loading the map, please try again later!"
+function mapError() {
+
+    document.getElementById('map').innerHTML = "There was an error loading the map, please try again later!";
 }

@@ -1,0 +1,15 @@
+    #map {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0px;
+    }
+
+    button,
+    li {
+        cursor: pointer;
+    }
+
+    .item {
+        color: white;
+    }
